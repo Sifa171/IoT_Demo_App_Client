@@ -7,8 +7,7 @@ var myApp = angular.module('myApp', ['ngRoute',
     'myApp.services',
     'myApp.filters',
     'snap',
-    'fhcloud',
-    'angularBasicAuth'
+    'fhcloud'
 ]);
 
 myApp.config(function($routeProvider) {
