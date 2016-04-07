@@ -1,6 +1,6 @@
 <fhheader title="The Internet of things" subtext="needs a strong Partner"></fhheader>
 
-<section id="example">
+<section id="content">
     <div id="formWrapper">
         <div class="input-group input-group">
             <input ng-model="username" required="true" placeholder="Enter your BPM-Username" type="text" class="form-control"></input>
@@ -10,7 +10,7 @@
         </div>
         <br>
         <button type="button" class="btn btn-primary btn-block" ng-click="getTasks()">Get my tasks</button>
-        <div ng-show="noticeMessage" class="text-center jumbotron hello-result {{textClassName}}">{{noticeMessage}}
+        <div ng-show="noticeMessage" class="text-center jumbotron result {{textClassName}}">{{noticeMessage}}
           <table>
             <tr>
               <th>Id</th>

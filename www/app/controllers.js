@@ -46,7 +46,7 @@ myApp.controller('MainCtrl',
          * an error.
          */
         var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/query';
-        fhcloud.cloud('hello', url, defer.resolve, defer.reject);
+        fhcloud.cloud('tasks', url, defer.resolve, defer.reject);
       }
     };
 });

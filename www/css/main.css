@@ -7,11 +7,11 @@ body {
     width: inherit;
     height: inherit;
 }
-#example {
+#content {
     width: 80%;
     height: 470px;
     position: absolute;
-    top: 11%;
+    top: 30%;
     left: 10%;
 }
 header {
@@ -58,7 +58,7 @@ footer > div > small {
 .center {
     text-align: center;
 }
-.hello-result{
+.result{
     margin: 20px 0px 0px 0px;
     font-size: 2em;
 }
