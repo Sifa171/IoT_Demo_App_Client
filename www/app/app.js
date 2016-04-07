@@ -7,14 +7,15 @@ var myApp = angular.module('myApp', ['ngRoute',
     'myApp.services',
     'myApp.filters',
     'snap',
-    'fhcloud'
+    'fhcloud',
+    'angularBasicAuth'
 ]);
 
 myApp.config(function($routeProvider) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'views/example.html',
+            templateUrl: 'views/tasks.html',
             controller: 'MainCtrl'
         })
 });

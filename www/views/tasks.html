@@ -1,0 +1,30 @@
+<fhheader title="The Internet of things" subtext="needs a strong Partner"></fhheader>
+
+<section id="example">
+    <div id="formWrapper">
+        <div class="input-group input-group">
+            <input ng-model="username" required="true" placeholder="Enter your BPM-Username" type="text" class="form-control"></input>
+            <input ng-model="password" required="true" placeholder="Enter your BPM-Password" type="password" class="form-control"></input>
+            <input ng-model="ip" required="true" placeholder="Enter IP of your BPM" type="text" class="form-control"></input>
+            <input ng-model="port" required="true" placeholder="Enter Port of your BPM" type="number" class="form-control"></input>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary btn-block" ng-click="getTasks()">Get my tasks</button>
+        <div ng-show="noticeMessage" class="text-center jumbotron hello-result {{textClassName}}">{{noticeMessage}}
+          <table>
+            <tr>
+              <th>Id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+            <tr ng-repeat="task in tasks">
+              <td>{{task.taskSummaryList.id}}</td>
+              <td>{{task.taskSummaryList.name}}</td>
+              <td>{{task.taskSummaryList.actualOwnerId}}</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+</section>
+
+<fhfooter></fhfooter>

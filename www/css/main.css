@@ -32,7 +32,7 @@ header {
     font-family: OS-Light;
 }
 .header-footer-bg {
-    background-color: #7ea1b6;
+    background-color: #FF051D;
 }
 footer {
     position: absolute;
@@ -74,4 +74,17 @@ footer > div > small {
 }
 .input-group {
     display: block;
+}
+.logo {
+  height: 40px;
+  padding-top: 5px;
+}
+table {
+  border: 1px solid #666;
+    width: 100%;
+}
+th {
+  background: #f8f8f8;
+  font-weight: bold;
+    padding: 2px;
 }
