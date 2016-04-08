@@ -6,27 +6,23 @@ myApp.controller('MainCtrl',
          function($scope, $q, fhcloud, $http) {
     // $fh.cloud call to controller scope
     $scope.getTasks = function() {
-      var username = 'psteiner';//$scope.username;
-      var password = 'change12_me'; //$scope.password;
-      var ip = '127.0.0.1'//$scope.ip;
-      var port = '9090'//$scope.port;
-      //Notifying the user that the cloud endpoint is being called.
+      var username = $scope.username;
+      var password = $scope.password;
+      var ip = $scope.ip;
+      var port = $scope.port;
+
       $scope.tasks = [];
-      $scope.noticeMessage = "Calling Cloud Endpoint";
-      $scope.textClassName = "text-info";
 
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
       var defer = $q.defer();
-
       var promise = defer.promise;
 
       //When the promise has completed, then the notice message can be updated to include result of the $fh.cloud call.
       promise.then(function(response){
         // If successful, display the length  of the string.
         if (response.msg != null && typeof(response.msg) !== 'undefined') {
-          $scope.noticeMessage = response.msg;
-          $scope.tasks = response.msg;
-          $scope.textClassName = "text-success";
+          $scope.tasks = response.msg.taskSummaryList;
+          $scope.noticeMessage  = null;
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
           $scope.textClassName = "text-danger";
@@ -47,6 +43,13 @@ myApp.controller('MainCtrl',
          */
         var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/query';
         fhcloud.cloud('tasks', url, defer.resolve, defer.reject);
+      }else {
+        $scope.noticeMessage  = "Please set your login credentials and Connection";
+        $scope.textClassName = "text-danger";
       }
     };
+
+    $scope.test = function(){
+      $scope.noticeMessage  = "test";
+    }
 });

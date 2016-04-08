@@ -10,20 +10,23 @@
         </div>
         <br>
         <button type="button" class="btn btn-primary btn-block" ng-click="getTasks()">Get my tasks</button>
-        <div ng-show="noticeMessage" class="text-center jumbotron result {{textClassName}}">{{noticeMessage}}
+        <div ng-show="tasks" class="text-center jumbotron result">
           <table>
             <tr>
               <th>Id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th>Task name</th>
+              <th>Actual owner</th>
+              <th>Status</th>
             </tr>
-            <tr ng-repeat="task in tasks">
-              <td>{{task.taskSummaryList.id}}</td>
-              <td>{{task.taskSummaryList.name}}</td>
-              <td>{{task.taskSummaryList.actualOwnerId}}</td>
+            <tr ng-repeat="task in tasks" ng-click="test()">
+              <td>{{task.id}}</td>
+              <td>{{task.name}}</td>
+              <td>{{task.actualOwnerId}}</td>
+              <td>{{task.status}}</td>
             </tr>
           </table>
       </div>
+      <div ng-show="noticeMessage" class="text-center jumbotron result {{textClassName}}">{{noticeMessage}}
     </div>
 </section>
 
