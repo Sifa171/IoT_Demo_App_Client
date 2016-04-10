@@ -1,0 +1,79 @@
+<fhheader title="The Internet of Things" subtext="needs a strong Partner"></fhheader>
+
+<section id="content">
+    <div id="formWrapper">
+        <div class="input-group input-group">
+            <input ng-model="username" required="true" placeholder="Enter your BPM-Username" type="text" class="form-control"></input>
+            <input ng-model="password" required="true" placeholder="Enter your BPM-Password" type="password" class="form-control"></input>
+            <input ng-model="ip" required="true" placeholder="Enter IP of your BPM" type="text" class="form-control"></input>
+            <input ng-model="port" required="true" placeholder="Enter Port of your BPM" type="number" class="form-control"></input>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary btn-block" ng-click="getTasks()">Get my tasks</button>
+        <div ng-show="tasks" class="text-center jumbotron result">
+          <table>
+            <tr>
+              <th>Id</th>
+              <th>Task name</th>
+              <th>Actual owner</th>
+              <th>Status</th>
+            </tr>
+            <tr ng-repeat="task in tasks" ng-click="getTaskContent(task)">
+              <td>{{task.id}}</td>
+              <td>{{task.name}}</td>
+              <td>{{task.actualOwnerId}}</td>
+              <td>{{task.status}}</td>
+            </tr>
+          </table>
+      </div>
+      <div ng-show="noticeMessage" class="text-center jumbotron result {{textClassName}}">{{noticeMessage}}
+      </div>
+      <div ng-show="taskContent" class="text-center jumbotron result ">
+        <table>
+          <tr>
+            <th>Task name</th>
+            <td>{{taskContent.TaskName}}</td>
+          </tr>
+          <tr>
+            <th>Node name</th>
+            <td>{{taskContent.NodeName}}</td>
+          </tr>
+          <tr>
+            <th>Error message</th>
+            <td>{{taskContent.errorMessage}}</td>
+          </tr>
+          <tr>
+            <th>Timestamp</th>
+            <td>{{taskContent.timestamp}}</td>
+          </tr>
+          <tr>
+            <th>Actor Id</th>
+            <td>{{taskContent.ActorId}}</td>
+          </tr>
+          <tr>
+            <th>Device type</th>
+            <td>{{taskContent.deviceType}}</td>
+          </tr>
+          <tr>
+            <th>Device Id</th>
+            <td>{{taskContent.deviceID}}</td>
+          </tr>
+          <tr>
+            <th>Errorcode</th>
+            <td>{{taskContent.errorCode}}</td>
+          </tr>
+          <tr>
+            <th>Payload</th>
+            <td>{{taskContent.payload}}</td>
+          </tr>
+          <tr>
+            <th>Skippable</th>
+            <td>{{taskContent.Skippable}}</td>
+          </tr>
+        </table>
+        <input ng-model="taskId" type="hidden" value="{{taskId}}"></input>
+        <button type="button" class="btn btn-primary btn-block" ng-click="completeTask()">Complete task</button>
+      </div>
+</section>
+
+<fhfooter></fhfooter>
