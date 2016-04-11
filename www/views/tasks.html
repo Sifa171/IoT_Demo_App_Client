@@ -1,33 +1,86 @@
-<fhheader title="The Internet of things" subtext="needs a strong Partner"></fhheader>
+<fhheader title="The Internet of Things" subtext="needs a strong Partner"></fhheader>
 
 <section id="content">
-    <div id="formWrapper">
-        <div class="input-group input-group">
-            <input ng-model="username" required="true" placeholder="Enter your BPM-Username" type="text" class="form-control"></input>
-            <input ng-model="password" required="true" placeholder="Enter your BPM-Password" type="password" class="form-control"></input>
-            <input ng-model="ip" required="true" placeholder="Enter IP of your BPM" type="text" class="form-control"></input>
-            <input ng-model="port" required="true" placeholder="Enter Port of your BPM" type="number" class="form-control"></input>
-        </div>
-        <br>
-        <button type="button" class="btn btn-primary btn-block" ng-click="getTasks()">Get my tasks</button>
-        <div ng-show="tasks" class="text-center jumbotron result">
-          <table>
-            <tr>
-              <th>Id</th>
-              <th>Task name</th>
-              <th>Actual owner</th>
-              <th>Status</th>
+  <div class="container-fluid" data-ng-init="initTable()">
+  	<div class="row">
+  		<div class="col-md-12">
+        <button type="button" class="btn btn-primary btn-block myBigButtons" ng-click="getTasks()">Refresh my tasks</button>
+  			<table class="table table-bordered table-hover table-condensed" ng-show="tasks">
+  				<thead>
+  					<tr>
+  						<th>Task Name</th>
+  						<th>Actual Owner</th>
+  						<th>Action</th>
+  					</tr>
+  				</thead>
+  				<tbody>
+            <tr ng-repeat="task in tasks | filter:statusIsReserved">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="startTask(task)">Start</button></td>
             </tr>
-            <tr ng-repeat="task in tasks" ng-click="test()">
-              <td>{{task.id}}</td>
-              <td>{{task.name}}</td>
-              <td>{{task.actualOwnerId}}</td>
-              <td>{{task.status}}</td>
+            <tr ng-repeat="task in tasks | filter:statusIsInProgress">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="completeTask(task)">Complete</button></td>
             </tr>
-          </table>
-      </div>
-      <div ng-show="noticeMessage" class="text-center jumbotron result {{textClassName}}">{{noticeMessage}}
-    </div>
+            <tr ng-repeat="task in tasks | filter:statusIsReady">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="claimTask(task)">Claim</button></td>
+            </tr>
+				    </tbody>
+			   </table>
+		  </div>
+	 </div>
+   <div class="row">
+     <div ng-show="noticeMessage" class="col-md-12">{{noticeMessage}}</div>
+     <div ng-show="taskContent" class="col-md-12" >
+       <table class="myTaskContent">
+         <tr>
+           <th>Task name</th>
+           <td>{{taskContent.TaskName}}</td>
+         </tr>
+         <tr>
+           <th>Node name</th>
+           <td>{{taskContent.NodeName}}</td>
+         </tr>
+         <tr>
+           <th>Error message</th>
+           <td>{{taskContent.errorMessage}}</td>
+         </tr>
+         <tr>
+           <th>Timestamp</th>
+           <td>{{taskContent.timestamp}}</td>
+         </tr>
+         <tr>
+           <th>Actor Id</th>
+           <td>{{taskContent.ActorId}}</td>
+         </tr>
+         <tr>
+           <th>Device type</th>
+           <td>{{taskContent.deviceType}}</td>
+         </tr>
+         <tr>
+           <th>Device Id</th>
+           <td>{{taskContent.deviceID}}</td>
+         </tr>
+         <tr>
+           <th>Errorcode</th>
+           <td>{{taskContent.errorCode}}</td>
+         </tr>
+         <tr>
+           <th>Payload</th>
+           <td>{{taskContent.payload}}</td>
+         </tr>
+         <tr>
+           <th>Skippable</th>
+           <td>{{taskContent.Skippable}}</td>
+         </tr>
+       </table>
+     </div>
+   </div>
+  </div>
 </section>
 
 <fhfooter></fhfooter>

@@ -1,9 +1,27 @@
-<header class="header-footer-bg">
-    <div class="center">
-        <img src="img/redhatlogo.png" class="logo">
-        <h3>{{ title.title }}<br>
-            <small>{{ title.subtext }}</small>
+<header class="header-footer-bg myHeader">
+  <nav class="navbar navbar-inverse center myNavbar">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav myNavbarLinks">
+          <li><a href="#tasks">Tasks</a></li>
+          <li><a href="#login">Login</a></li>
+        </ul>
+      </div>
+  </nav>
+    <div class="container-fluid">
+      <div class="col-md-6">
+            <img src="img/redhatlogo.png" class="myLogo">
+      </div>
+      <div class"col-md-6">
+        <h3 class="myBrand">{{ title.title }}<br>
+            <span class="small">{{ title.subtext }}</span>
         </h3>
-
+      </div>
     </div>
 </header>

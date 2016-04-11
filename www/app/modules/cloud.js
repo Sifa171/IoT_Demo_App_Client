@@ -12,12 +12,23 @@
  */
 
 angular.module('fhcloud', ['ngResource']).service("fhcloud", function() {
-    this.cloud = function(cloudEndpoint, userInput, successCb, errCb) {
+    this.cloudGet = function(cloudEndpoint, url, successCb, errCb) {
       var params = {
         path: cloudEndpoint,
         method: "GET",
-        contentType: "application/json",
-        data: {tasks: userInput},
+        data: {url: url},
+        timeout: 15000
+      };
+
+      $fh.cloud(params, successCb, errCb);
+    };
+    this.cloudPost = function(cloudEndpoint, url, successCb, errCb) {
+      var params = {
+        path: cloudEndpoint,
+        method: "POST",
+        data: {
+          url: url
+        },
         timeout: 15000
       };
 

@@ -9,14 +9,14 @@
     <title>BPM - My Tasks</title>
 
     <!-- styles entry point -->
-    <link rel="stylesheet" href="css/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/lib/bootstrap/css/bootstrap.css">
 </head>
 
 <body ng-app="myApp">
 
     <!-- View Entry Point -->
-    <div id="app" class="container-fluid" ng-cloak ng-view></div>
+    <div id="app" ng-cloak ng-view></div>
 
     <!-- Feedhenry JS SDK -->
     <script src="feedhenry.js"></script>
@@ -27,7 +27,8 @@
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="lib/angular-snap/angular-snap.js"></script>
-    <script src="lib/bootstrap/bootstrap.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
     <script src="lib/snap.js"></script>
 
     <!-- Custom FH Angular Modules -->
@@ -42,5 +43,4 @@
     <!-- Client App entry Point -->
     <script src="app/app.js"></script>
 </body>
-
 </html>
