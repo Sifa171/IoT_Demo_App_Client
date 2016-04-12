@@ -28,7 +28,6 @@ myApp.controller('MainCtrl',
           $scope.taskContent = null;
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
-          $scope.textClassName = "text-danger";
         }
       }, function(err){
         //If the function
@@ -47,8 +46,7 @@ myApp.controller('MainCtrl',
         var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/query';
         fhcloud.cloudGet('tasks', url, defer.resolve, defer.reject);
       }else {
-        $scope.noticeMessage  = "Please set your login credentials and Connection";
-        $scope.textClassName = "text-danger";
+        $scope.noticeMessage  = "Please enter your login credentials and conection";
       }
     };
 
@@ -70,15 +68,25 @@ myApp.controller('MainCtrl',
           $scope.noticeMessage  = null;
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
-          $scope.textClassName = "text-danger";
         }
       }, function(err){
         //If the function
         $scope.noticeMessage = "$fh.cloud failed. Error: " + JSON.stringify(err);
       });
-
-      var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/content';
+      // check if userInput is defined
+      if (username && password && ip && port) {
+        /**
+         * Pass the userInput to the module containing the $fh.cloud call.
+         *
+         * Notice that the defer.resolve and defer.reject functions are passed to the module.
+         * One of these functions will be called when the $fh.cloud function has completed successully or encountered
+         * an error.
+         */
+       var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/content'
       fhcloud.cloudGet('taskContent', url, defer.resolve, defer.reject);
+      }else {
+        $scope.noticeMessage  = "Please enter your login credentials and connection";
+      }
     }
 
     $scope.completeTask = function(task){
@@ -99,14 +107,25 @@ myApp.controller('MainCtrl',
           loadTasks();
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
-          $scope.textClassName = "text-danger";
         }
       }, function(err){
         //If the function
         $scope.noticeMessage = "$fh.cloud failed. Error: " + JSON.stringify(err);
       });
-      var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/complete';
-      fhcloud.cloudGet('completeTask', completeUrl, defer.resolve, defer.reject);
+      // check if userInput is defined
+      if (username && password && ip && port) {
+        /**
+         * Pass the userInput to the module containing the $fh.cloud call.
+         *
+         * Notice that the defer.resolve and defer.reject functions are passed to the module.
+         * One of these functions will be called when the $fh.cloud function has completed successully or encountered
+         * an error.
+         */
+       var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/complete';
+       fhcloud.cloudGet('completeTask', completeUrl, defer.resolve, defer.reject);
+      }else {
+        $scope.noticeMessage  = "Please enter your login credentials and connection";
+      }
     }
 
     $scope.startTask = function(task){
@@ -127,14 +146,25 @@ myApp.controller('MainCtrl',
           loadTasks();
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
-          $scope.textClassName = "text-danger";
         }
       }, function(err){
         //If the function
         $scope.noticeMessage = "$fh.cloud failed. Error: " + JSON.stringify(err);
       });
-      var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/start';
-      fhcloud.cloudGet('startTask', completeUrl, defer.resolve, defer.reject);
+      // check if userInput is defined
+      if (username && password && ip && port) {
+        /**
+         * Pass the userInput to the module containing the $fh.cloud call.
+         *
+         * Notice that the defer.resolve and defer.reject functions are passed to the module.
+         * One of these functions will be called when the $fh.cloud function has completed successully or encountered
+         * an error.
+         */
+         var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/start';
+         fhcloud.cloudGet('startTask', completeUrl, defer.resolve, defer.reject);
+      }else {
+        $scope.noticeMessage  = "Please enter your login credentials and connection";
+      }
     }
 
     $scope.claimTask = function(task){
@@ -155,14 +185,25 @@ myApp.controller('MainCtrl',
           loadTasks();
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
-          $scope.textClassName = "text-danger";
         }
       }, function(err){
         //If the function
         $scope.noticeMessage = "$fh.cloud failed. Error: " + JSON.stringify(err);
       });
-      var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/claim';
-      fhcloud.cloudGet('claimTask', completeUrl, defer.resolve, defer.reject);
+      // check if userInput is defined
+      if (username && password && ip && port) {
+        /**
+         * Pass the userInput to the module containing the $fh.cloud call.
+         *
+         * Notice that the defer.resolve and defer.reject functions are passed to the module.
+         * One of these functions will be called when the $fh.cloud function has completed successully or encountered
+         * an error.
+         */
+         var completeUrl = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/' + taskId + '/claim';
+         fhcloud.cloudGet('claimTask', completeUrl, defer.resolve, defer.reject);
+      }else {
+        $scope.noticeMessage  = "Please enter your login credentials and connection";
+      }
     }
 
     $scope.statusIsReserved = function(task){
@@ -203,5 +244,9 @@ myApp.controller('MainCtrl',
 
     $scope.initTable = function() {
       loadTasks();
+    }
+
+    $scope.initVersion = function(){
+      $scope.version = '1.0';
     }
 });

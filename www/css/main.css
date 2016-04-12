@@ -10,8 +10,19 @@
   background-color: #cc0000;
 }
 
+.myFooter{
+  background-color: #cc0000;
+  color: #000000;
+  margin-top: 2%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .myLogo{
   float: left;
+  margin-bottom: 2%;
 }
 
 .myBrand{
@@ -43,4 +54,25 @@
 
 .myTaskContent{
   text-align: end;
+}
+
+.myNoticeMessage{
+  text-align: center;
+  font-size: 1.5em;
+  color: #cc0000;
+}
+
+.myAboutContent{
+  text-align: center;
+  font-size: 1.0em;
+  color: #cc0000;
+  margin: 2% 2% 2% 2%;
+  padding: 2% 2% 2% 2%;
+  border: 2px solid;
+  border-radius: 25px;
+  border-color: #101010;
+}
+
+.myOpenSourcerersLink{
+  font-size: 1.5em;
 }
