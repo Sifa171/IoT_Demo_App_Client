@@ -1,0 +1,84 @@
+<fhheader title="The Internet of Things" subtext="needs a strong Partner"></fhheader>
+
+<section id="content">
+  <div class="container-fluid" data-ng-init="initTable()">
+  	<div class="row">
+  		<div class="col-md-12">
+        <button type="button" class="btn btn-primary btn-block myBigButtons" ng-click="getTasks()">Refresh my tasks</button>
+  			<table class="table table-bordered table-hover table-condensed" ng-show="tasks">
+  				<thead>
+  					<tr>
+  						<th>Task Name</th>
+  						<th>Actual Owner</th>
+  						<th>Action</th>
+  					</tr>
+  				</thead>
+  				<tbody>
+            <tr ng-repeat="task in tasks | filter:statusIsReserved">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="startTask(task)">Start</button></td>
+            </tr>
+            <tr ng-repeat="task in tasks | filter:statusIsInProgress">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="completeTask(task)">Complete</button></td>
+            </tr>
+            <tr ng-repeat="task in tasks | filter:statusIsReady">
+              <td ng-click="getTaskContent(task)">{{task.name}}</td>
+              <td ng-click="getTaskContent(task)">{{task.actualOwnerId}}</td>
+              <td><button type="button" class="btn btn-primary btn-block mySmallButtons" ng-click="claimTask(task)">Claim</button></td>
+            </tr>
+				    </tbody>
+			   </table>
+		  </div>
+	 </div>
+   <div class="row">
+     <div ng-show="noticeMessage" class="col-md-12 myNoticeMessage">{{noticeMessage}}</div>
+     <div ng-show="taskContent" class="col-md-12" >
+       <table class="myTaskContent">
+         <tr>
+           <th>Task name</th>
+           <td>{{taskContent.TaskName}}</td>
+         </tr>
+         <tr>
+           <th>Node name</th>
+           <td>{{taskContent.NodeName}}</td>
+         </tr>
+         <tr>
+           <th>Error message</th>
+           <td>{{taskContent.errorMessage}}</td>
+         </tr>
+         <tr>
+           <th>Timestamp</th>
+           <td>{{taskContent.timestamp}}</td>
+         </tr>
+         <tr>
+           <th>Actor Id</th>
+           <td>{{taskContent.ActorId}}</td>
+         </tr>
+         <tr>
+           <th>Device type</th>
+           <td>{{taskContent.deviceType}}</td>
+         </tr>
+         <tr>
+           <th>Device Id</th>
+           <td>{{taskContent.deviceID}}</td>
+         </tr>
+         <tr>
+           <th>Errorcode</th>
+           <td>{{taskContent.errorCode}}</td>
+         </tr>
+         <tr>
+           <th>Payload</th>
+           <td>{{taskContent.payload}}</td>
+         </tr>
+         <tr>
+           <th>Skippable</th>
+           <td>{{taskContent.Skippable}}</td>
+         </tr>
+       </table>
+     </div>
+   </div>
+  </div>
+</section>
