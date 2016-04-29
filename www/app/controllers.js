@@ -21,17 +21,27 @@ myApp.controller('MainCtrl',
 
       //When the promise has completed, then the notice message can be updated to include result of the $fh.cloud call.
       promise.then(function(response){
-        // If successful, display the length  of the string.
-        if (response.msg != null && typeof(response.msg) !== 'undefined') {
-          $scope.tasks = response.msg.taskSummaryList;
+        // If the login credentials are bad
+       if(response.msg != null && response.statusCode == '401') {
+          $scope.noticeMessage  = "Bad login credentials";
+          $scope.taskContent = null;
+          $scope.tasks = null;
+        } else if (response.msg != null && typeof(response.msg) !== 'undefined' && response.statusCode == '200') {
           $scope.noticeMessage  = null;
+          $scope.tasks = response.msg.taskSummaryList;
+          if($scope.tasks.length == 0){
+            $scope.noticeMessage  = 'Tasklist is empty';
+          }
           $scope.taskContent = null;
         } else {
           $scope.noticeMessage  = "Error: Expected a message from $fh.cloud.";
+          $scope.taskContent = null;
+          $scope.tasks = null;
         }
       }, function(err){
-        //If the function
         $scope.noticeMessage = "$fh.cloud failed. Error: " + JSON.stringify(err);
+        $scope.taskContent = null;
+        $scope.tasks = null;
       });
 
       // check if userInput is defined
@@ -46,7 +56,7 @@ myApp.controller('MainCtrl',
         var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/query';
         fhcloud.cloudGet('tasks', url, defer.resolve, defer.reject);
       }else {
-        $scope.noticeMessage  = "Please enter your login credentials and conection";
+        $scope.noticeMessage  = "Please enter your login credentials and valid conection";
       }
     };
 
@@ -227,19 +237,36 @@ myApp.controller('MainCtrl',
       return false;
       };
 
-    $scope.setLoginCookie = function(){
-      // Setting a cookie
-      $cookies.put('username', $scope.username);
-      $cookies.put('password', $scope.password);
-      $cookies.put('ip', $scope.ip);
-      $cookies.put('port', $scope.port);
+    $scope.setLoginCookieAndNavigateToTasks = function(){
+      // store the credentials in to the mobile device
+      window.localStorage.setItem("iot_username", $scope.username);
+      window.localStorage.setItem("iot_password", $scope.password);
+      window.localStorage.setItem("iot_ip", $scope.ip);
+      window.localStorage.setItem("iot_port", $scope.port);
+      //$cookies.put('username', $scope.username);
+      //$cookies.put('password', $scope.password);
+      //$cookies.put('ip', $scope.ip);
+      //$cookies.put('port', $scope.port);
+      location.href = '#tasks';
     }
 
     $scope.initCookies = function() {
-      $scope.username = $cookies.get('username');
-      $scope.password = $cookies.get('password');
-      $scope.ip = $cookies.get('ip');
-      $scope.port = $cookies.get('port');
+      if(window.localStorage.getItem("iot_username") !== undefined){
+        $scope.username = window.localStorage.getItem("iot_username");
+      }
+      if(window.localStorage.getItem("iot_password") !== undefined){
+        $scope.password = window.localStorage.getItem("iot_password");
+      }
+      if(window.localStorage.getItem("iot_ip") !== undefined){
+        $scope.ip = window.localStorage.getItem("iot_ip");
+      }
+      if(window.localStorage.getItem("iot_port") !== undefined){
+        $scope.port = window.localStorage.getItem("iot_port");
+      }
+      //$scope.username = $cookies.get('username');
+      //$scope.password = $cookies.get('password');
+      //$scope.ip = $cookies.get('ip');
+      //$scope.port = $cookies.get('port');
     }
 
     $scope.initTable = function() {
@@ -247,6 +274,6 @@ myApp.controller('MainCtrl',
     }
 
     $scope.initVersion = function(){
-      $scope.version = '1.1';
+      $scope.version = '1.1.1';
     }
 });
