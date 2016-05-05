@@ -9,10 +9,10 @@ myApp.controller('MainCtrl',
     }
     // $fh.cloud call to controller scope
    function loadTasks() {
-      var username = $cookies.get('username');
-      var password = $cookies.get('password');
-      var ip = $cookies.get('ip');
-      var port = $cookies.get('port');
+      var username = window.localStorage.getItem("iot_username");
+      var password = window.localStorage.getItem("iot_password");
+      var ip = window.localStorage.getItem("iot_ip");
+      var port = window.localStorage.getItem("iot_port");
       $scope.tasks = [];
 
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
@@ -61,10 +61,10 @@ myApp.controller('MainCtrl',
     };
 
     $scope.getTaskContent = function(task){
-      var username = $cookies.get('username');
-      var password = $cookies.get('password');
-      var ip = $cookies.get('ip');
-      var port = $cookies.get('port');
+      var username = window.localStorage.getItem("iot_username");
+      var password = window.localStorage.getItem("iot_password");
+      var ip = window.localStorage.getItem("iot_ip");
+      var port = window.localStorage.getItem("iot_port");
       var taskId = task.id;
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
       var defer = $q.defer();
@@ -100,10 +100,10 @@ myApp.controller('MainCtrl',
     }
 
     $scope.completeTask = function(task){
-      var username = $cookies.get('username');
-      var password = $cookies.get('password');
-      var ip = $cookies.get('ip');
-      var port = $cookies.get('port');
+      var username = window.localStorage.getItem("iot_username");
+      var password = window.localStorage.getItem("iot_password");
+      var ip = window.localStorage.getItem("iot_ip");
+      var port = window.localStorage.getItem("iot_port");
       var taskId = task.id;
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
       var defer = $q.defer();
@@ -139,10 +139,10 @@ myApp.controller('MainCtrl',
     }
 
     $scope.startTask = function(task){
-      var username = $cookies.get('username');
-      var password = $cookies.get('password');
-      var ip = $cookies.get('ip');
-      var port = $cookies.get('port');
+      var username = window.localStorage.getItem("iot_username");
+      var password = window.localStorage.getItem("iot_password");
+      var ip = window.localStorage.getItem("iot_ip");
+      var port = window.localStorage.getItem("iot_port");
       var taskId = task.id;
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
       var defer = $q.defer();
@@ -178,10 +178,10 @@ myApp.controller('MainCtrl',
     }
 
     $scope.claimTask = function(task){
-      var username = $cookies.get('username');
-      var password = $cookies.get('password');
-      var ip = $cookies.get('ip');
-      var port = $cookies.get('port');
+      var username = window.localStorage.getItem("iot_username");
+      var password = window.localStorage.getItem("iot_password");
+      var ip = window.localStorage.getItem("iot_ip");
+      var port = window.localStorage.getItem("iot_port");
       var taskId = task.id;
       //Creating an AngularJS promise as the $fh.cloud function is asynchronous.
       var defer = $q.defer();
