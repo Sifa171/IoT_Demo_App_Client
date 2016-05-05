@@ -56,7 +56,7 @@ myApp.controller('MainCtrl',
         var url = 'http://' + username + ':' + password + '@' + ip + ':' + port + '/business-central/rest/task/query';
         fhcloud.cloudGet('tasks', url, defer.resolve, defer.reject);
       }else {
-        $scope.noticeMessage  = "Please enter your login credentials and valid conection";
+        $scope.noticeMessage  = "Please enter your login credentials and valid connection";
       }
     };
 
