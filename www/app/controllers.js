@@ -274,6 +274,6 @@ myApp.controller('MainCtrl',
     }
 
     $scope.initVersion = function(){
-      $scope.version = '1.1.1';
+      $scope.version = '1.1.2';
     }
 });
