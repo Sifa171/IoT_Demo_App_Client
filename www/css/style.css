@@ -155,3 +155,22 @@
 .modalHeader h1{
   color: #FFFFFF !IMPORTANT;
 }
+
+.myBrand{
+  color: #cc0000 !IMPORTANT;
+}
+
+.small {
+  color: #cc0000 !IMPORTANT;
+  font-size: 0.7em;
+}
+
+.myLogo{
+  float: left;
+  margin-bottom: 2%;
+}
+
+.informationDash{
+  float: left;
+  width: 100%;
+}

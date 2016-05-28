@@ -343,7 +343,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('TaskDetailCtrl', function($scope, $stateParams, $ionicLoading, $ionicModal) {
+.controller('TaskDetailCtrl', function($scope, $stateParams, $ionicLoading) {
   $scope.readOnly = 'readonly';
 
   $scope.show = function() {
@@ -363,6 +363,7 @@ angular.module('starter.controllers', [])
       duration: 1000
     });
     //Reloading the Task-Tab
+    location.href = '#/tab/tasks';
     window.location.reload(true);
   };
 
@@ -404,7 +405,7 @@ angular.module('starter.controllers', [])
     $scope.$broadcast('scroll.refreshComplete');
   };
 
-  function completeTask(){
+  $scope.completeTask = function(){
       $scope.show();
       $fh.cloud({
         "path": "/bpm/completeTask",
@@ -415,13 +416,7 @@ angular.module('starter.controllers', [])
           "password": window.localStorage.getItem("bpm_password"),
           "ip": window.localStorage.getItem("bpm_ip"),
           "port": window.localStorage.getItem("bpm_port"),
-          "taskId": $stateParams.taskId,
-          "errorMessage": $scope.taskContent.errorMessage,
-          "timestamp": $scope.taskContent.timestamp,
-          "deviceType": $scope.taskContent.deviceType,
-          "deviceID": $scope.taskContent.deviceID,
-          "errorCode": $scope.taskContent.errorCode,
-          "payload": $scope.taskContent.payload
+          "taskId": $stateParams.taskId
         }
       }, function(res) {
         if(res.code == 'ECONNREFUSED'){
@@ -453,43 +448,4 @@ angular.module('starter.controllers', [])
         }
         return false;
   };
-
-  // Load the modal from the given template URL
-  $ionicModal.fromTemplateUrl('templates/task-detail-edit.html', function($ionicModal) {
-    $scope.modal = $ionicModal;
-  }, {
-    // Use our scope for the scope of the modal to keep it simple
-    scope: $scope,
-    // The animation we want to use for the modal entrance
-    animation: 'slide-in-up'
-  });
-
-  // Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-
-   $scope.modalCancel = function(){
-    $scope.modal.hide();
-    $scope.show();
-    loadTaskContent();
-  }
-
-  $scope.modalComplete = function(){
-    completeTask();
-    $scope.modal.hide();
-    location.href = '#/tab/tasks';
-  }
-
-  $scope.modalSave = function(){
-    $scope.modal.hide();
-  }
-
 })

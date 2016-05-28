@@ -1,9 +1,5 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <ion-refresher
-      pulling-text="Pull to refresh..."
-      on-refresh="getProcess()">
-    </ion-refresher>
   <style>
   .spinner svg {
     width: 12px;
@@ -12,7 +8,13 @@
     fill: #444;
   }
   </style>
-    <h2>BPM Connector</h2>
+  <div>
+    <img src="img/redhatlogo.png" class="myLogo">
+    <h3 class="myBrand">The Internet of Things<br>
+            <span class="small">needs a strong Partner</span>
+    </h3>
+  </div>
+  <div class="informationDash">
     <h4>Messages</h4>
     <div class="list">
       <a id="waiting" class="item" href="#">
@@ -27,41 +29,10 @@
         <h2><i class="icon ion-alert-circled"></i>&nbsp;Error while enabling push</h2>
         <p id="pushregistererror-msg">ERROR</p>
       </a>
-      <span class="item" ng-show="processName">
-        <p>Currently interacting with the following Process:</p>
-        <p><b>{{processName}}</b></p>
-      </span>
       <span class="item noticeMessage" ng-show="noticeMessage">
         <p class="noticeMessage"><b>{{noticeMessage}}</b></p>
       </span>
     </div>
-    <div ng-show="processName">
-    <h4>Create a new case</h4>
-    <form>
-      <div class="list list-inset" data-ng-init="getProcess()">
-        <label class="item item-input">
-          <input ng-model="case.deviceType" type="text" placeholder="Device Type"></input>
-        </label>
-        <label class="item item-input">
-          <input ng-model="case.deviceID" type="text" placeholder="Device ID"></input>
-        </label>
-        <label class="item item-input">
-          <input ng-model="case.payload" type="text" placeholder="Data received"></input>
-        </label>
-        <label class="item item-input">
-          <input ng-model="case.timestamp" type="text" placeholder="Time of error event">
-        </label>
-        <label class="item item-input">
-          <input ng-model="case.errorCode" type="text" placeholder="Erro Code"></input>
-        </label>
-        <label class="item item-input">
-          <input ng-model="case.errorMessage" type="text" placeholder="Error Message">
-        </label>
-        <button type="button" class="button button-block button-stable" ng-click="createCase()">
-          Create
-        </button>
-      </div>
-    </form>
   </div>
   </ion-content>
 </ion-view>

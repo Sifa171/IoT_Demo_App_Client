@@ -28,8 +28,8 @@
         <div class="item">
           <b>Error Message:</b> {{taskContent.errorMessage}}
         </div>
-        <button type="button" class="button button-block button-stable button-claim" ng-click="modal.show()" ng-show="statusIsInProgress()">
-          Edit
+        <button type="button" class="button button-block button-stable button-complete" ng-click="completeTask()" ng-show="statusIsInProgress()">
+          Complete Task
         </button>
     </div>
   </ion-content>
