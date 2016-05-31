@@ -212,7 +212,7 @@ angular.module('starter.controllers', [])
         }else{
           $scope.noticeMessage = null;
           $scope.tasks = res.taskSummaryList;
-          if(res.taskSummaryList != 'undefined'){
+          if(res.taskSummaryList != undefined){
             if(res.taskSummaryList.length == 0){
               $scope.noticeMessage  = 'Tasklist is empty';
             }else{
