@@ -212,14 +212,18 @@ angular.module('starter.controllers', [])
         }else{
           $scope.noticeMessage = null;
           $scope.tasks = res.taskSummaryList;
-          if(res.taskSummaryList.length == 0){
-            $scope.noticeMessage  = 'Tasklist is empty';
-          }else{
-            for (i = 0; i < res.taskSummaryList.length; i++) {
-              if(isBlank(res.taskSummaryList[i].actualOwnerId))
-              res.taskSummaryList[i].actualOwnerId = 'Ownerless';
+          if(res.taskSummaryList != 'undefined'){
+            if(res.taskSummaryList.length == 0){
+              $scope.noticeMessage  = 'Tasklist is empty';
+            }else{
+              for (i = 0; i < res.taskSummaryList.length; i++) {
+                if(isBlank(res.taskSummaryList[i].actualOwnerId))
+                res.taskSummaryList[i].actualOwnerId = 'Ownerless';
+              }
+              $scope.tasks = res.taskSummaryList;
             }
-            $scope.tasks = res.taskSummaryList;
+          }else{
+            $scope.noticeMessage  = 'Tasklist is undefined';
           }
           $scope.hide();
         }
