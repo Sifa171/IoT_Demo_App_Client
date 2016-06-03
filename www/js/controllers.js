@@ -20,10 +20,12 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port")
+          "params": {
+            "username": window.localStorage.getItem("bpm_username"),
+            "password": window.localStorage.getItem("bpm_password"),
+            "ip": window.localStorage.getItem("bpm_ip"),
+            "port": window.localStorage.getItem("bpm_port")
+          }
         }
       }, function(res) {
         if(res.code == 'ECONNREFUSED'){
@@ -55,10 +57,12 @@ angular.module('starter.controllers', [])
           "method": "POST",
           "contentType": "application/json",
           "data": {
-            "username": window.localStorage.getItem("bpm_username"),
-            "password": window.localStorage.getItem("bpm_password"),
-            "ip": window.localStorage.getItem("bpm_ip"),
-            "port": window.localStorage.getItem("bpm_port"),
+            "params": {
+              "username": window.localStorage.getItem("bpm_username"),
+              "password": window.localStorage.getItem("bpm_password"),
+              "ip": window.localStorage.getItem("bpm_ip"),
+              "port": window.localStorage.getItem("bpm_port"),
+            },
             "errorMessage": $scope.case.errorMessage,
             "timestamp": $scope.case.timestamp,
             "deviceType": $scope.case.deviceType,
@@ -126,10 +130,12 @@ angular.module('starter.controllers', [])
       "method": "POST",
       "contentType": "application/json",
       "data": {
-        "username": $scope.login.username,
-        "password": $scope.login.password,
-        "ip": $scope.login.ip,
-        "port": $scope.login.port
+        "params": {
+          "username": $scope.login.username,
+          "password": $scope.login.password,
+          "ip": $scope.login.ip,
+          "port": $scope.login.port
+        }
       }
     }, function(res) {
       if(res.code == 'ECONNREFUSED'){
@@ -199,10 +205,12 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port")
+          "params": {
+            "username": $scope.login.username,
+            "password": $scope.login.password,
+            "ip": $scope.login.ip,
+            "port": $scope.login.port
+          }
         }
       }, function(res) {
         if(res.code == 'ECONNREFUSED'){
@@ -245,10 +253,12 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port"),
+          "params": {
+            "username": window.localStorage.getItem("bpm_username"),
+            "password": window.localStorage.getItem("bpm_password"),
+            "ip": window.localStorage.getItem("bpm_ip"),
+            "port": window.localStorage.getItem("bpm_port"),
+          },
           "taskId": task.id
         }
       }, function(res) {
@@ -274,10 +284,12 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port"),
+          "params": {
+            "username": window.localStorage.getItem("bpm_username"),
+            "password": window.localStorage.getItem("bpm_password"),
+            "ip": window.localStorage.getItem("bpm_ip"),
+            "port": window.localStorage.getItem("bpm_port"),
+          },
           "taskId": task.id
         }
       }, function(res) {
@@ -303,10 +315,12 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port"),
+          "params": {
+            "username": window.localStorage.getItem("bpm_username"),
+            "password": window.localStorage.getItem("bpm_password"),
+            "ip": window.localStorage.getItem("bpm_ip"),
+            "port": window.localStorage.getItem("bpm_port"),
+          },
           "taskId": task.id
         }
       }, function(res) {
@@ -382,12 +396,13 @@ angular.module('starter.controllers', [])
       "method": "POST",
       "contentType": "application/json",
       "data": {
-        "username": window.localStorage.getItem("bpm_username"),
-        "password": window.localStorage.getItem("bpm_password"),
-        "ip": window.localStorage.getItem("bpm_ip"),
-        "port": window.localStorage.getItem("bpm_port"),
-        "taskStatus": $stateParams.status,
-        "taskId": $stateParams.taskId
+        "params": {
+          "username": window.localStorage.getItem("bpm_username"),
+          "password": window.localStorage.getItem("bpm_password"),
+          "ip": window.localStorage.getItem("bpm_ip"),
+          "port": window.localStorage.getItem("bpm_port"),
+        },
+        "taskId": $stateParams.id
       },
       "timeout": 25000
     }, function(res) {
@@ -416,11 +431,13 @@ angular.module('starter.controllers', [])
         "method": "POST",
         "contentType": "application/json",
         "data": {
-          "username": window.localStorage.getItem("bpm_username"),
-          "password": window.localStorage.getItem("bpm_password"),
-          "ip": window.localStorage.getItem("bpm_ip"),
-          "port": window.localStorage.getItem("bpm_port"),
-          "taskId": $stateParams.taskId
+          "params": {
+            "username": window.localStorage.getItem("bpm_username"),
+            "password": window.localStorage.getItem("bpm_password"),
+            "ip": window.localStorage.getItem("bpm_ip"),
+            "port": window.localStorage.getItem("bpm_port"),
+          },
+          "taskId": $stateParams.id
         }
       }, function(res) {
         if(res.code == 'ECONNREFUSED'){
