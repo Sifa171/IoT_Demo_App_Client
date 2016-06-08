@@ -306,7 +306,7 @@ angular.module('starter.controllers', [])
           "ip": window.localStorage.getItem("bpm_ip"),
           "port": window.localStorage.getItem("bpm_port"),
         },
-        "taskId": $stateParams.id
+        "taskId": $stateParams.taskId
       },
       "timeout": 25000
     }, function(res) {
@@ -345,7 +345,7 @@ angular.module('starter.controllers', [])
             "ip": window.localStorage.getItem("bpm_ip"),
             "port": window.localStorage.getItem("bpm_port"),
           },
-          "taskId": $stateParams.id
+          "taskId": $stateParams.taskId
         }
       }, function(res) {
         if(res.code == 'ECONNREFUSED'){
